@@ -3,6 +3,7 @@ import Jobs from "./Jobs";
 
 const FeaturedJob = () => {
     const [jobs, setJobs] = useState([]);
+    const [datalength, setDatalength] = useState(4);
 
     useEffect(() =>{
         fetch('jobs.json')
@@ -19,9 +20,14 @@ const FeaturedJob = () => {
         </div>
         <div className="grid grid-cols-2 gap-28 m-16">
             {
-                jobs.map((job)=><Jobs key={job.id} job={job}></Jobs>)
+                jobs.slice(0, datalength).map((job)=><Jobs key={job.id} job={job}></Jobs>)
             }
         </div>
+        <div className={`${datalength === jobs.length && 'hidden'} card-actions justify-center`}>
+            <button onClick={()=>setDatalength(jobs.length)} className="btn my-5 bg-orange-300 hover:bg-orange-500 border-orange-800 text-black">
+              Show All
+            </button>
+          </div>
         </div>
     );
 };
