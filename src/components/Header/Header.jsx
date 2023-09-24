@@ -1,4 +1,19 @@
+import { NavLink } from "react-router-dom";
+
 const Header = () => {
+  const links = (
+    <>
+      <li className="text-black text-xl">
+        <NavLink to='statictics'>Statistics</NavLink>
+      </li>
+      <li className="text-black text-xl">
+        <NavLink to='appliedjobs'>Applied Jobs</NavLink>
+      </li>
+      <li className="text-black text-xl">
+        <NavLink to='blog'>Blog</NavLink>
+      </li>
+    </>
+  );
   return (
     <div className="navbar w-4/5 mx-auto bg-orange-300">
       <div className="navbar-start">
@@ -21,37 +36,20 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {links}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl text-black">CareerHub</a>
+        <NavLink to='' className="btn btn-ghost normal-case text-xl text-black">
+          CareerHub
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            
-            <a>Item 2</a>
-        </li>     
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a className="btn">Start Applying</a>
       </div>
     </div>
   );
